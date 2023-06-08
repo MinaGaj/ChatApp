@@ -16,17 +16,19 @@ class Messages extends Component {
         
         const {member, text} = message;
         const messageFromMe = member.id === currentMember.id;
+        
+
         const className = messageFromMe ? "Messages-message currentMember" : "Messages-message";
     
         return (
             <li key={index} className={className}>
                 <span
                     className="avatar"
-                    style={{backgroundColor: member.color}}
+                    style={{backgroundColor: messageFromMe ? currentMember.color : member.clientData.color}}
             ></span>
             <div className="Message-content">
                 <div className="username">
-                    {member.username}
+                    {messageFromMe ? currentMember.username : member.clientData.username}
                 </div>
                 <div className="text">{text}</div>
             </div>

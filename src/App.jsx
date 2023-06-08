@@ -32,15 +32,10 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.drone = new window.Scaledrone("C5DiaHgKdEWGdtbi");
-    this.state = {
-      messages: [],
-      member: {
-        username: randomName(),
-        color: randomColor(),
-        id: ''
-      }
-    };
+    this.drone = new window.Scaledrone("C5DiaHgKdEWGdtbi",
+    {
+      data: this.state.member
+    }); 
   }
   
   componentDidMount() {
@@ -66,7 +61,7 @@ render() {
   return (
     <div className="App">
       <div className='App-header'>
-        <h1>Chatting Chat App</h1>
+        <h1>ChatOn</h1>
       </div>
       <Messages
         messages={this.state.messages}
