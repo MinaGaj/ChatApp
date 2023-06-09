@@ -27,10 +27,15 @@ class Input extends Component {
         this.setState({text: e.target.value});
       }
 
-    onSubmit(e) {
+      onSubmit(e) {
         e.preventDefault();
-        this.setState({text: ""});
-        this.props.onSendMessage(this.state.text);
+        const trimmedTxt = this.state.text.trim();
+        if(trimmedTxt.length > 0){
+            this.props.onSendMessage(trimmedTxt);
+            this.setState({text: ''});
+        }else{
+            return;
+        }    
     }
 
     
